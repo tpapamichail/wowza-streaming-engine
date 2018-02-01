@@ -27,8 +27,8 @@ class Request
         $this->setUrl($url);
 
         $headers = [
-            'Content-Type' => 'application/json',
-            'Accept'       => 'application/json',
+            'Content-Type' => 'application/' . Config::$responseType,
+            'Accept'       => 'application/' . Config::$responseType,
         ];
 
         if (Config::$debug === true) echo $this->getUrl();

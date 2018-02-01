@@ -11,6 +11,5 @@ class Servers extends AbstractModule
     public function __construct()
     {
         $this->prefixUrl = Config::$version . "/{$this->module}";
-        parent::__construct();
     }
 }

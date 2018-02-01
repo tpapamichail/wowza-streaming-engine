@@ -11,60 +11,27 @@ abstract class AbstractModule
     protected $prefixUrl;
     protected $allowedMethods;
 
-    /**
-     * @var Request
-     */
-    protected $request;
-
-    /**
-     * Applications constructor.
-     * @param Request $request
-     */
-    public function __construct()
+    public function __call($name, $arguments)
     {
-        $this->request = new Request;
+        $stringUrl = $arguments[0];
+        $body      = is_array($arguments[1]) ? $arguments[1] : [];
+
+        if (in_array($name, ["get", "post", "put", "delete"]))
+            return $this->exec(strtoupper($name), $stringUrl, $body);
+        else
+            return new Response(null, json_encode(['success' => false, 'message' => "method not available"]), null);
     }
 
-    public function get($stringUrl = null)
+    public function exec($method, $stringUrl = null, $body = [])
     {
-        if (!in_array('GET', $this->allowedMethods))
-            return new Response(null, ['message' => 'method GET not available'], null);
+        if (!in_array($method, $this->allowedMethods))
+            return new Response(null, json_encode(['success' => false, 'message' => "method $method not available"]), null);
 
         $stringUrl = !is_null($stringUrl) ? "/$stringUrl" : null;
         $strUrl    = "{$this->prefixUrl}$stringUrl";
 
-        return $this->request->exec($strUrl, "GET");
-    }
+        $request = new Request;
 
-    public function post($stringUrl = null, $body = [])
-    {
-        if (!in_array('POST', $this->allowedMethods))
-            return new Response(null, json_encode(['message' => 'method POST not available']), null);
-
-        $stringUrl = !is_null($stringUrl) ? "/$stringUrl" : null;
-        $strUrl    = "{$this->prefixUrl}$stringUrl";
-
-        return $this->request->exec($strUrl, "POST", $body);
-    }
-
-    public function put($stringUrl = null, $body = [])
-    {
-        if (!in_array('PUT', $this->allowedMethods))
-            return new Response(null, ['message' => 'method PUT not available'], null);
-        $stringUrl = !is_null($stringUrl) ? "/$stringUrl" : null;
-        $strUrl    = "{$this->prefixUrl}$stringUrl";
-
-        return $this->request->exec($strUrl, "PUT", $body);
-    }
-
-    public function delete($stringUrl = null)
-    {
-        if (!in_array('DELETE', $this->allowedMethods))
-            return new Response(null, ['message' => 'method DELETE not available'], null);
-
-        $stringUrl = !is_null($stringUrl) ? "/$stringUrl" : null;
-        $strUrl    = "{$this->prefixUrl}$stringUrl";
-
-        return $this->request->exec($strUrl, "DELETE");
+        return $request->exec($strUrl, $method, $body);
     }
 }

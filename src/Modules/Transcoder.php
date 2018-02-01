@@ -4,10 +4,10 @@ namespace WowzaStreamingEngine\Modules;
 
 use WowzaStreamingEngine\Config\Config;
 
-class Users extends AbstractModule
+class Transcoder extends AbstractModule
 {
-    protected $module         = 'users';
-    protected $allowedMethods = ['GET', 'POST', 'PUT', 'DELETE'];
+    protected $module         = 'transcoder';
+    protected $allowedMethods = ['GET'];
 
     public function __construct()
     {

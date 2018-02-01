@@ -4,10 +4,10 @@ namespace WowzaStreamingEngine\Modules;
 
 use WowzaStreamingEngine\Config\Config;
 
-class Users extends AbstractModule
+class Monitoring extends AbstractModule
 {
-    protected $module         = 'users';
-    protected $allowedMethods = ['GET', 'POST', 'PUT', 'DELETE'];
+    protected $module         = 'monitoring';
+    protected $allowedMethods = ['GET', 'PUT'];
 
     public function __construct()
     {

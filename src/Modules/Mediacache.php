@@ -4,9 +4,9 @@ namespace WowzaStreamingEngine\Modules;
 
 use WowzaStreamingEngine\Config\Config;
 
-class Users extends AbstractModule
+class Mediacache extends AbstractModule
 {
-    protected $module         = 'users';
+    protected $module         = 'mediacache';
     protected $allowedMethods = ['GET', 'POST', 'PUT', 'DELETE'];
 
     public function __construct()

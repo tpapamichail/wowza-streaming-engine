@@ -4,10 +4,10 @@ namespace WowzaStreamingEngine\Modules;
 
 use WowzaStreamingEngine\Config\Config;
 
-class Users extends AbstractModule
+class Log4j extends AbstractModule
 {
-    protected $module         = 'users';
-    protected $allowedMethods = ['GET', 'POST', 'PUT', 'DELETE'];
+    protected $module         = 'log4j';
+    protected $allowedMethods = ['GET', 'PUT'];
 
     public function __construct()
     {

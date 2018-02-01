@@ -8,10 +8,11 @@ class Config
     public static $port;
     public static $username;
     public static $password;
-    public static $version = 'v2';
+    public static $version      = 'v2';
     public static $serverName;
     public static $vhostName;
-    public static $debug   = false;
+    public static $responseType = 'json';
+    public static $debug        = false;
 
     public static function setOptions(Array $options)
     {

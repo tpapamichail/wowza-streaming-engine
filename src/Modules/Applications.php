@@ -12,6 +12,5 @@ class Applications extends AbstractModule
     public function __construct()
     {
         $this->prefixUrl = Config::$version . "/servers/" . Config::$serverName . "/vhosts/" . Config::$vhostName . "/{$this->module}";
-        parent::__construct();
     }
 }

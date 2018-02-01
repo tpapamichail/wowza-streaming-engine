@@ -4,13 +4,13 @@ namespace WowzaStreamingEngine\Modules;
 
 use WowzaStreamingEngine\Config\Config;
 
-class Licences extends AbstractModule
+class Tune extends AbstractModule
 {
-    protected $module = 'licences';
+    protected $module         = 'tune';
+    protected $allowedMethods = ['GET', 'PUT'];
 
     public function __construct()
     {
         $this->prefixUrl = Config::$version . "/servers/" . Config::$serverName . "/{$this->module}";
-        parent::__construct();
     }
 }
