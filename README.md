@@ -42,16 +42,16 @@ $result = $wse->get('applications', 'applicationName', function (Response $respo
 applications : Application Operations
 
     get applications
-        Retrieves the list of Applications for the specifed vhost
+        Recupera a lista de Aplicativos para o host especificado
         
     post applications
-        Adds an Application to the list of Applications for the specifed vhost
+        Adiciona um aplicativo à lista de aplicativos para o host especificado
         
     get applications/{appName}
-        Retrieves the specified Application configuration
+        Recupera a configuração de aplicativo especificado
         
     post applications/{appName}
-        Adds the specified Application configuration
+        Adiciona a configuração de aplicativo especificado
         
     put applications/{appName}
         Updates the specified Application configuration
