@@ -1,20 +1,24 @@
 ```bash
-$ composer require marcelo-correa/wowza-streaming-engine
+Install Composer
+composer require marcelo-correa/wowza-streaming-engine
 ```
 ```bash
+<?php
+
 require __DIR__ . "/vendor/autoload.php";
 
 use WowzaStreamingEngine\Response\Response;
 use \WowzaStreamingEngine\WowzaStreamingEngine;
 
 $wse = new WowzaStreamingEngine([
-    'host'       => '...',
-    'port'       => '8087',
-    'username'   => '...',
-    'password'   => '...',
-    'serverName' => '_defaultServer_',
-    'vhostName'  => '_defaultVHost_',
-    'debug'      => true,
+    'host'         => '...',
+    'port'         => '8087',
+    'username'     => '...',
+    'password'     => '...',
+    'serverName'   => '_defaultServer_',
+    'vhostName'    => '_defaultVHost_',
+    'responseType' => 'json', //xml
+    'debug'        => true,
 ]);
 ```
 Methods
@@ -25,17 +29,18 @@ Methods
     $wse->delete('modulo', 'url', callback);
 ```
 
-Listar Aplicações
+Exemplos:
 ```bash
 $result = $wse->get('applications', function (Response $response) {
-    return $response->getBodyToArray();
+    return $response->getBody();
 });
-```
 
-Listar 1 Aplicação
-```bash
 $result = $wse->get('applications', 'applicationName', function (Response $response) {
-    return $response->getBodyToArray();
+    return $response->getBody();
+});
+
+$result = $wse->put('applications', 'applicationName', ['description' => 'Alterado via api'], function (Response $response) {
+    return $response->getBody();
 });
 ```
 
