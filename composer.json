@@ -1,0 +1,16 @@
+{
+  "name": "marcelo-correa/wowza-streaming-engine",
+  "description": "Wowza Streaming Engine RestApi PHP",
+  "authors": [
+    {
+      "name": "Marcelo Corrêa",
+      "email": "marcelocorrea229@gmail.com"
+    }
+  ],
+  "require": {},
+  "autoload": {
+    "psr-4": {
+      "WowzaStreamingEngine\\": "src/"
+    }
+  }
+}
